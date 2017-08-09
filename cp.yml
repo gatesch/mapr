@@ -1,0 +1,6 @@
+- name: Copy hosts file to the controller
+  hosts: localhost
+  tasks:
+
+  - name: Copy host file to controller
+    command: sshpass -p "mapr" scp -o Port=26 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@10.128.0.4:/etc

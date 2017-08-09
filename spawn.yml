@@ -1,0 +1,18 @@
+- name: Use Marathon to create MapR cluster
+  hosts: localhost
+  tasks:
+
+  - name: Spawn the MapR controller
+    command: dcos marathon app add /home/gatesch/mapr/mapr-controller.json
+
+  - name: Spawn the MapR data1 node
+    command: dcos marathon app add /home/gatesch/mapr/mapr-data1.json
+
+  - pause:
+      seconds: 6
+
+  - name: Copy host file to controller
+    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.2.130:/etc/
+
+  - name: Copy host file to data1
+    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.1.130:/etc/

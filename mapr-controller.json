@@ -1,0 +1,45 @@
+{
+  "id": "/mapr-controller",
+  "instances": 1,
+  "cpus": 2,
+  "mem": 5120,
+  "disk": 0,
+  "labels": {
+    "HAPROXY_GROUP":"external",
+    "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
+    "HAPROXY_0_VHOST":"33.33.33.13"
+  },
+  "constraints": [["hostname", "CLUSTER", "33.33.33.8"]],
+  "ipAddress":{
+      "networkName":"dcos"
+   },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "maprtech/mapr-control-cent67:5.2.0",
+      "privileged": true,
+      "parameters": [
+                { "key": "hostname", "value": "comc1" }
+            ],
+      "network": "USER",
+      "portMappings": [
+         { 
+            "containerPort": 8080,  
+            "servicePort": 10001, 
+            "name": "mapr" 
+         }
+      ]
+    }
+  },
+
+  "requirePorts": true,
+  "acceptedResourceRoles": [
+    "slave_public"
+  ],
+  "env": {
+    "MEMTOTAL":"5120000",
+    "DISKLIST":"/dev/sdb",
+    "CLUSTERNAME":"my.cluster.com"
+  }
+}
+

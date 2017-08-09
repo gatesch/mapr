@@ -1,0 +1,34 @@
+{
+  "id": "/mapr-data1",
+  "instances": 1,
+  "cpus": 2,
+  "mem": 5120,
+  "disk": 0,
+  "constraints": [["hostname", "CLUSTER", "10.128.0.5"]],
+  "ipAddress":{
+      "networkName":"dcos"
+   },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "maprtech/mapr-data-cent67:5.2.0",
+      "privileged": true,
+      "parameters": [
+                { "key": "hostname", "value": "data1" }
+            ],
+      "network": "USER"
+    }
+  },
+
+  "requirePorts": true,
+  "acceptedResourceRoles": [
+    "slave_public"
+  ],
+  "env": {
+    "MEMTOTAL":"5120000",
+    "CLDBIP":"9.0.1.130",
+    "DISKLIST":"/dev/sdb",
+    "CLUSTERNAME":"my.cluster.com"
+  }
+}
+
