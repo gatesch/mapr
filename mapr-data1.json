@@ -1,10 +1,10 @@
 {
-  "id": "/mapr-data1",
+  "id": "/data1",
   "instances": 1,
   "cpus": 2,
   "mem": 5120,
   "disk": 0,
-  "constraints": [["hostname", "CLUSTER", "10.128.0.5"]],
+  "constraints": [["hostname", "CLUSTER", "10.85.232.246"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -21,14 +21,10 @@
   },
 
   "requirePorts": true,
-  "acceptedResourceRoles": [
-    "slave_public"
-  ],
   "env": {
     "MEMTOTAL":"5120000",
-    "CLDBIP":"9.0.1.130",
-    "DISKLIST":"/dev/sdb",
+    "CLDBIP":"9.0.4.130",
+    "DISKLIST":"/dev/vda",
     "CLUSTERNAME":"my.cluster.com"
   }
 }
-
