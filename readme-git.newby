@@ -1,0 +1,35 @@
+1) Initialize the repo in what will be your working directory
+
+  git init .
+
+2) add the origin remote
+
+  git remote add origin git@github.com/gatesch/mapr.git
+
+3) pull the repo files so that your machine is current
+
+  git pull git@github.com:gatesch/mapr.git
+
+4) test ssh connectivity if it does not work
+
+  ssh -T git@github.com
+
+5) add the key to your settings -> ssh-key (from your picture on the top right)
+
+from your machine,
+
+pbcopy < ~/.ssh/id_rsa.pub
+
+6) test ssh connectivity again
+
+  ssh -T git@github.com
+
+7) make changes to the files then
+
+   git add -A
+
+   git commit -m "new changes"
+
+   git push -u origin master
+
+
