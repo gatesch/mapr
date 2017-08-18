@@ -1,0 +1,17 @@
+---
+  - hosts: controller
+    tasks:
+
+    - name: copy the teragen scripts to the /home/mapr directory
+      copy: 
+        src: ../files/teragen.sh
+        dest: /home/mapr/teragen.sh
+        mode: 0755
+        owner: mapr
+        
+    - name: copy the terasory scripts to the /home/mapr directory
+      copy:
+        src: ../files/terasort.sh
+        dest: /home/mapr/terasort.sh
+        mode: 0755
+        owner: mapr

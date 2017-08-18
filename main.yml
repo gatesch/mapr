@@ -13,3 +13,5 @@
 - include: playbooks/hosts.yml
 - include: playbooks/install-rpcbind.yml
 - include: playbooks/hadoop.yml
+- include: playbooks/benchmarks.yml
+- include: playbooks/benchmarks-scripts.yml
