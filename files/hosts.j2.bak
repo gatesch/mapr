@@ -1,0 +1,3 @@
+127.0.0.1	localhost
+{{ hostvars[groups['controller'][0]].ansible_eth0.ipv4.address }} comc1
+{{ hostvars[groups['data1'][0]].ansible_eth0.ipv4.address }} data1

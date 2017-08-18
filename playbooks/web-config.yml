@@ -1,0 +1,8 @@
+---
+  - hosts: controller
+    tasks:
+    - name: Copy the web.conf file to the controller
+      copy:
+        src: ../files/web.conf
+        dest: /opt/mapr/conf/
+        owner: mapr

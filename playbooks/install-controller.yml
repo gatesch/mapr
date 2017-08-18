@@ -1,0 +1,16 @@
+---
+  - hosts: controller
+    tasks:
+
+    - name: Install Jobtracker
+      yum:
+        name: mapr-jobtracker
+        state: present
+
+    - name: Install Spark
+      yum:
+        name: mapr-spark-historyserver
+        state: present
+
+    - name: Reconfigure the services
+      command: /opt/mapr/server/configure.sh -R

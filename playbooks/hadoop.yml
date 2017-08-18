@@ -1,0 +1,10 @@
+--- 
+- hosts: controller
+  tasks:
+
+  - name: create log directory under MapR-FS for spark
+    command: hadoop fs -mkdir /apps/spark
+
+  - name: change permission to spark log directory
+    command: hadoop fs -chmod 777 /apps/spark
+
