@@ -4,11 +4,19 @@
 
 2) add the origin remote
 
-  git remote add origin git@github.com/gatesch/mapr.git
+  git remote add origin git@github.com:gatesch/mapr.git
 
 3) pull the repo files so that your machine is current
 
   git pull git@github.com:gatesch/mapr.git
+
+4) if accessing the repo fails, test with
+
+  git remote -v
+
+5) remove the repo and add back with the right syntax
+
+  git remote remove origin
 
 4) test ssh connectivity if it does not work
 
