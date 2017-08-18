@@ -25,7 +25,7 @@
       "portMappings": [
          { 
             "containerPort": 8080,  
-            "servicePort": 10001, 
+            "servicePort": 8080, 
             "name": "http"
          },
          {
@@ -44,6 +44,41 @@
             "name": "cldb3" 
          },
          {
+            "containerPort": 1111,
+            "servicePort": 1111,
+            "name": "hoststats" 
+         },
+         {
+            "containerPort": 8030,
+            "servicePort": 8030,
+            "name": "rm1" 
+         },
+         {
+            "containerPort": 8031,
+            "servicePort": 8031,
+            "name": "rm2" 
+         },
+         {
+            "containerPort": 8032,
+            "servicePort": 8032,
+            "name": "rm3" 
+         },
+         {
+            "containerPort": 8033,
+            "servicePort": 8033,
+            "name": "rm4"
+         },
+         {
+            "containerPort": 8088,
+            "servicePort": 8088,
+            "name": "rm"
+         },
+         {
+            "containerPort": 10020,
+            "servicePort": 10020,
+            "name": "jh1"
+         },
+         {
             "containerPort": 19888,
             "servicePort": 19888,
             "name": "jh2"
@@ -52,6 +87,11 @@
             "containerPort": 50030,
             "servicePort": 50030,
             "name": "jt"
+         },
+         {
+            "containerPort": 9090,
+            "servicePort": 9090,
+            "name": "hbase"
          }
       ]
     }
@@ -60,10 +100,10 @@
   "healthChecks": [
     {
       "protocol": "TCP",
-      "gracePeriodSeconds": 500,
+      "gracePeriodSeconds": 300,
       "intervalSeconds": 15,
       "timeoutSeconds": 5,
-      "maxConsecutiveFailures": 20,
+      "maxConsecutiveFailures": 2,
       "portName": "http"
     }
   ],

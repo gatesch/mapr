@@ -9,12 +9,27 @@
       seconds: 180
 
   - name: Copy web.conf file to controller
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no web.conf root@9.0.4.130:/opt/mapr/conf/
+    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no web.conf root@9.0.2.130:/opt/mapr/conf/
 
 - name: Install additional services in controller
   hosts: mapr
   tasks:
 
+  - name: Install hbase-master
+    yum:
+      name: mapr-hbase-master
+      state: present
+
+  - name: Install hbase
+    yum:
+      name: mapr-hbase
+      state: present
+
+  - name: Install Drill
+    yum:
+      name: mapr-drill
+      state: present
+ 
   - name: Install Jobtracker
     yum:
       name: mapr-jobtracker
@@ -24,17 +39,6 @@
     yum:
       name: mapr-spark-historyserver
       state: present
-
-  - name: Install portmap
-    yum:
-      name: portmap
-      state: present
-
-  - name: Start rpcbind
-    service:
-      name: rpcbind
-      state: started
-      enabled: yes
 
   - name: Reconfigure the services
     command: /opt/mapr/server/configure.sh -R

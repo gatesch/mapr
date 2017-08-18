@@ -1,0 +1,55 @@
+- name: add users and groups
+  hosts: mapr-all
+  tasks:
+
+  - group:
+      name: mkt
+      state: present
+
+  - group:
+      name: dev
+      state: present
+
+  - user:
+      name: marje
+      comment: "marje something"
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+    
+  - user:
+      name: sharon
+      comment: "sharon what"
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: dev
+      comment: "this is a dev"
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: mark
+      comment: "this is a mark"
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: jenn
+      comment: "Jen is a mark"
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - file:
+      path: /home/mark/vol1
+      state: directory
+      owner: mark
+      group: mkt
+      mode: 0755
+     

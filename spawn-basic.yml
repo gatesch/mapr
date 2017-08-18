@@ -11,22 +11,9 @@
   - name: Copy web.conf file to controller
     command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no web.conf root@9.0.2.130:/opt/mapr/conf/
 
-  - name: Copy hosts file to controller
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.2.130:/etc/hosts
-
 - name: Install additional services in controller
   hosts: mapr
   tasks:
-
-  - name: Install Jobtracker
-    yum:
-      name: mapr-jobtracker
-      state: present
-
-  - name: Install Spark
-    yum:
-      name: mapr-spark-historyserver
-      state: present
 
   - name: Install portmap
     yum:
@@ -60,18 +47,3 @@
 
   - name: Spawn the MapR data4 node
     command: dcos marathon app add mapr-data4.json
-
-  - pause:
-      seconds: 60
-
-  - name: Copy hosts file to data1 node
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.3.130:/etc/hosts
-
-  - name: Copy hosts file to data2 node
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.4.130:/etc/hosts
-
-  - name: Copy hosts file to data3 node
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.5.130:/etc/hosts
-
-  - name: Copy hosts file to data4 node
-    command: sshpass -p "mapr" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no hosts root@9.0.6.130:/etc/hosts

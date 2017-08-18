@@ -1,9 +1,0 @@
-- name: Use Marathon to create MapR cluster
-  hosts: localhost
-  tasks:
-
-  - name: Destroy the MapR controller
-    command: dcos marathon app remove /mapr-controller
-
-  - name: Destroy the MapR data1 node
-    command: dcos marathon app remove /mapr-data1

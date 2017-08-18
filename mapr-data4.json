@@ -4,7 +4,7 @@
   "cpus": 2,
   "mem": 5120,
   "disk": 0,
-  "constraints": [["hostname", "CLUSTER", "10.85.232.249"]],
+  "constraints": [["hostname", "CLUSTER", "33.33.33.16"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -23,8 +23,9 @@
   "requirePorts": true,
   "env": {
     "MEMTOTAL":"5120000",
-    "CLDBIP":"9.0.4.130",
-    "DISKLIST":"/dev/vda",
+    "CLDBIP":"9.0.2.130",
+    "DISKLIST":"/dev/vdb",
     "CLUSTERNAME":"my.cluster.com"
   }
 }
+
