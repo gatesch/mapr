@@ -1,0 +1,41 @@
+- name: add demo users and groups
+  hosts: all
+  tasks:
+
+  - group:
+      name: mkt
+      state: present
+
+  - group:
+      name: dev
+      state: present
+
+  - user:
+      name: marje
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: dev
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: mark
+      shell: /bin/bash
+      group: dev
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: sharon
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/
+
+  - user:
+      name: jenn
+      shell: /bin/bash
+      group: mkt
+      password: $6$4yVSr9lRF3/KyKhp$QSgLqBK9a1Y52tILrbumxEA86dIUaZ1e3DlECxpnc7jVxrBvGwI1ubfe9alqJaqs9xC3AdCNMwCmQsm9VUEEv/

@@ -6,4 +6,4 @@
     command: dcos marathon app add ../json/mapr-controller.json
 
   - pause:
-      seconds: 180
+      seconds: 120
