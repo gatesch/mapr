@@ -15,3 +15,38 @@
         dest: /home/mapr/terasort.sh
         mode: 0755
         owner: mapr
+
+    - name: copy the topology script to the /home/mapr directory
+      copy: 
+        src: ../files/topology.sh
+        dest: /home/mapr/topology.sh
+        mode: 0755
+        owner: mapr
+
+    - name: copy the user ACL script to the /home/mapr directory
+      copy: 
+        src: ../files/acl-users.sh
+        dest: /home/mapr/acl-users.sh
+        mode: 0755
+        owner: mapr
+
+    - name: copy the user ACL script to the /home/mapr directory
+      copy: 
+        src: ../files/volume-topology.sh
+        dest: /home/mapr/volume-topology.sh
+        mode: 0755
+        owner: mapr
+
+    - name: copy the user ACL script to the /home/mapr directory
+      copy: 
+        src: ../files/create-volume.sh
+        dest: /home/mapr/create-volume.sh
+        mode: 0755
+        owner: mapr
+
+    - name: copy the user ACL script to the /home/mapr directory
+      copy: 
+        src: ../files/volume-permissions.sh
+        dest: /home/mapr/volume-permissions.sh
+        mode: 0755
+        owner: mapr

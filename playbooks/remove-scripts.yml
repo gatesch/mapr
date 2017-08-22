@@ -1,0 +1,23 @@
+--- 
+- hosts: controller
+  tasks:
+
+  - name: remove scripts  after use
+    file: 
+      path: /home/mapr/create-volume.sh
+      state: absent
+
+  - name: remove scripts after use
+    file: 
+      path: /home/mapr/topology.sh
+      state: absent
+
+  - name: remove scripts after use
+    file: 
+      path: /home/mapr/acl-users.sh
+      state: absent
+
+  - name: remove scripts after use
+    file: 
+      path: /home/mapr/volume-permissions.sh
+      state: absent

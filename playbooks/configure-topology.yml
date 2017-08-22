@@ -1,0 +1,7 @@
+--- 
+- hosts: controller
+  tasks:
+
+  - name: Configure topology for dev and mkt tenants
+    command: /home/mapr/topology.sh
+

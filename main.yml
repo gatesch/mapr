@@ -16,3 +16,6 @@
 - include: playbooks/benchmarks.yml
 - include: playbooks/benchmarks-scripts.yml
 - include: playbooks/create-users.yml
+- include: playbooks/configure-topology.yml
+- include: playbooks/projects-mp.yml
+- include: playbooks/remove-scripts.yml

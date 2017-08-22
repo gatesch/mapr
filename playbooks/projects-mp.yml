@@ -1,0 +1,24 @@
+--- 
+- hosts: controller
+  tasks:
+
+  - name: create projects directory under MapR-FS for marketing projects
+    command: hadoop fs -mkdir -p /projects/mkt/miner
+
+  - name: change permission to mkt to minner directory
+    command: hadoop fs -chgrp -R mkt /projects/mkt
+
+  - name: create projects directory under MapR-FS for development projects
+    command: hadoop fs -mkdir -p /projects/dev/cobra
+
+  - name: change permission to mkt to minner directory
+    command: hadoop fs -chgrp -R dev /projects/dev
+
+  - name: set permissions for Sharon and Mark
+    command: /home/mapr/acl-users.sh
+
+  - name: create miner and cobra volumes
+    command: /home/mapr/create-volume.sh
+
+  - name: set permissions to miner and cobra volumes
+    command: /home/mapr/volume-permissions.sh
