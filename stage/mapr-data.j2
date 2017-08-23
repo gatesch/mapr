@@ -4,7 +4,7 @@
   "cpus": 2,
   "mem": 5120,
   "disk": 0,
-  "constraints": [["hostname", "CLUSTER", "33.33.33.16"]],
+  "constraints": [["hostname", "CLUSTER", "{{ hostvars[item]['dcos_private'] }}"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -14,7 +14,7 @@
       "image": "maprtech/mapr-data-cent67:5.2.0",
       "privileged": true,
       "parameters": [
-                { "key": "hostname", "value": "data4" }
+                { "key": "hostname", "value": "{{ hostvars[item]['ansible_hostname'] }}" }
             ],
       "network": "USER"
     }
@@ -23,9 +23,9 @@
   "requirePorts": true,
   "env": {
     "MEMTOTAL":"5120000",
-    "CLDBIP":"9.0.2.130",
-    "DISKLIST":"/dev/vdb",
-    "CLUSTERNAME":"my.cluster.com"
+    "CLDBIP":"{{ hostvars[groups['controller'][0]].ansible_eth0.ipv4.address }}",
+    "DISKLIST":"{{ hostvars[item]['storage'] }}",
+    "CLUSTERNAME":"{{ hostvars[groups['controller'][0]].clustername }}"
   }
 }
 

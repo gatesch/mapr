@@ -7,9 +7,9 @@
   "labels": {
     "HAPROXY_GROUP":"external",
     "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
-    "HAPROXY_0_VHOST": "33.33.33.11"
+    "HAPROXY_0_VHOST": "{{ hostvars[groups['controller'][0]].dcos_public }}"
   },
-  "constraints": [["hostname", "CLUSTER", "33.33.33.6"
+  "constraints": [["hostname", "CLUSTER", "{{ hostvars[groups['controller'][0]].dcos_private }}"
   }"]],
   "ipAddress":{
       "networkName":"dcos"
@@ -20,7 +20,7 @@
       "image": "maprtech/mapr-control-cent67:5.2.0",
       "privileged": true,
       "parameters": [
-                { "key": "hostname", "value": "comc1" }
+                { "key": "hostname", "value": "{{ hostvars[groups['controller'][0]].ansible_hostname }}" }
             ],
       "network": "USER",
       "portMappings": [
@@ -70,7 +70,7 @@
   ],
   "env": {
     "MEMTOTAL":"5120000",
-    "DISKLIST":"/dev/vdb",
+    "DISKLIST":"{{ hostvars[groups['controller'][0]].storage }}",
     "CLUSTERNAME":"my.cluster.com"
   }
 }

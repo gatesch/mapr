@@ -1,5 +1,5 @@
 - name: add demo users and groups
-  hosts: all
+  hosts: cluster
   tasks:
 
   - group:

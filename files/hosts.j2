@@ -1,6 +1,6 @@
 127.0.0.1	localhost
-{{ hostvars[groups['controller'][0]].ansible_eth0.ipv4.address }} comc1
-{{ hostvars[groups['data1'][0]].ansible_eth0.ipv4.address }} data1
-{{ hostvars[groups['data2'][0]].ansible_eth0.ipv4.address }} data2
-{{ hostvars[groups['data3'][0]].ansible_eth0.ipv4.address }} data3
-{{ hostvars[groups['data4'][0]].ansible_eth0.ipv4.address }} data4
+{{ hostvars[groups['controller'][0]].ansible_eth0.ipv4.address }} {{ hostvars[groups['controller'][0]].ansible_hostname }}
+{{ hostvars[groups['datanode1'][0]].ansible_eth0.ipv4.address }} {{ hostvars[groups['datanode1'][0]].ansible_hostname }}
+{{ hostvars[groups['datanode2'][0]].ansible_eth0.ipv4.address }} {{ hostvars[groups['datanode2'][0]].ansible_hostname }}
+{{ hostvars[groups['datanode3'][0]].ansible_eth0.ipv4.address }} {{ hostvars[groups['datanode3'][0]].ansible_hostname }}
+{{ hostvars[groups['datanode4'][0]].ansible_eth0.ipv4.address }} {{ hostvars[groups['datanode4'][0]].ansible_hostname }}

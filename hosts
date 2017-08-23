@@ -1,21 +1,49 @@
 [controller]
-9.0.2.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+comc1 ansible_ssh_host=9.0.2.130 ansible_ssh_pass=mapr ansible_ssh_user=root
 
-[data1]
-9.0.3.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+[controller:vars]
+dcos_public=33.33.33.11
+dcos_private=33.33.33.6
+storage=/dev/vdb
+clustername=my.cluster.com
 
-[data2]
-9.0.4.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+[datanode1]
+data1 ansible_ssh_host=9.0.3.130 ansible_ssh_pass=mapr ansible_ssh_user=root dcos_private=33.33.33.12 storage=/dev/vdb
 
-[data3]
-9.0.5.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+[datanode1:vars]
+dcos_private=33.33.33.12
+storage=/dev/vdb
 
-[data4]
-9.0.6.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+[datanode2]
+data2 ansible_ssh_host=9.0.4.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+
+[datanode2:vars]
+dcos_private=33.33.33.15
+storage=/dev/vdb
+
+[datanode3]
+data3 ansible_ssh_host=9.0.5.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+
+[datanode3:vars]
+dcos_private=33.33.33.5
+storage=/dev/vdb
+
+[datanode4]
+data4 ansible_ssh_host=9.0.6.130 ansible_ssh_pass=mapr ansible_ssh_user=root
+
+[datanode4:vars]
+dcos_private=33.33.33.16
+storage=/dev/vdb
 
 [cluster:children]
 controller
-data1
-data2
-data3
-data4
+datanode1
+datanode2
+datanode3
+datanode4
+
+[datanodes:children]
+datanode1
+datanode2
+datanode3
+datanode4

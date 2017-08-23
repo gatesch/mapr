@@ -1,0 +1,36 @@
+---
+  - hosts: controller
+    name: Gather facts from dcos public agent and private agent
+    tasks: []
+
+  - hosts: datanode1
+    name: Gather facts from dcos public agent and private agent
+    tasks: []
+
+  - hosts: datanode2
+    name: Gather facts from dcos public agent and private agent
+    tasks: []
+
+  - hosts: datanode3
+    name: Gather facts from dcos public agent and private agent
+    tasks: []
+
+  - hosts: datanode4
+    name: Gather facts from dcos public agent and private agent
+    tasks: []
+
+  - hosts: localhost
+    tasks:
+
+    - name: generate json file and copy to the json directory to prepare installation
+      template:
+        src: stage/mapr-controller.j2
+        dest: json/mapr-controller.json
+        owner: centos
+
+    - name: Generate json file for datanodes
+      template:
+        src: stage/mapr-data.j2
+        dest: json/mapr-{{ hostvars[item]['ansible_hostname'] }}.json
+        owner: centos
+      with_items: "{{ groups['datanodes'] }}"
