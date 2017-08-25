@@ -7,19 +7,7 @@
     name: Gather facts from dcos public agent and private agent
     tasks: []
 
-  - hosts: private2
-    name: Gather facts from dcos public agent and private agent
-    tasks: []
-
-  - hosts: private3
-    name: Gather facts from dcos public agent and private agent
-    tasks: []
-
-  - hosts: private4
-    name: Gather facts from dcos public agent and private agent
-    tasks: []
-
-  - hosts: private5
+  - hosts: data_agents
     name: Gather facts from dcos public agent and private agent
     tasks: []
 
