@@ -20,9 +20,22 @@
         dest: json/mapr-controller.json
         owner: centos
 
+    - name: generate main.yml playbook
+      template:
+        src: stage/main.j2
+        dest: ./main.yml
+        owner: centos
+
     - name: Generate json file for datanodes
       template:
         src: stage/mapr-data.j2
         dest: json/mapr-{{ hostvars[item]['container_name'] }}.json
+        owner: centos
+      with_items: "{{ groups['data_agents'] }}"
+
+    - name: Generate spawn playbooks for data nodes 
+      template:
+        src: stage/spawn-data.j2
+        dest: playbooks/spawn-{{ hostvars[item]['container_name'] }}.yml
         owner: centos
       with_items: "{{ groups['data_agents'] }}"
