@@ -9,8 +9,7 @@
     "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
     "HAPROXY_0_VHOST": "33.33.33.11"
   },
-  "constraints": [["hostname", "CLUSTER", "33.33.33.6"
-  }"]],
+  "constraints": [["hostname", "CLUSTER", "33.33.33.6"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -26,7 +25,7 @@
       "portMappings": [
          { 
             "containerPort": 8080,  
-            "servicePort": 10001, 
+            "servicePort": 8080, 
             "name": "http"
          },
          {

@@ -1,39 +1,82 @@
+#### DCOS public agent definition, this will host Marathon-LB to from MapR
+
+[public1]
+33.33.33.11 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem 
+
+#### DCOS Private agent definitions, use private1 to host the MapR controller 
+#### copy the private key used to access the agent in the "key" directory
+#### with name "mesos.pem"
+
+[private1]  
+33.33.33.6 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
+
+#### Define the vars for the private node to define where the storage LUN 
+#### resides and the clustername
+#### If the agent overlay IP is 9.0.2.129, the first container_ip in 
+#### the agent will be 9.0.2.130
+
+[private1:vars]
+storage=/dev/vdb
+container_name=comc1
+container_ip=9.0.2.130
+clustername=my.cluster.com
+
+[private2]
+33.33.33.12 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
+
+[private2:vars]
+storage=/dev/vdb
+container_name=data1
+container_ip=9.0.3.130
+
+[private3]
+33.33.33.15 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
+
+[private3:vars]
+storage=/dev/vdb
+container_name=data2
+container_ip=9.0.4.130
+
+[private4]
+33.33.33.5 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
+
+[private4:vars]
+storage=/dev/vdb
+container_name=data3
+container_ip=9.0.5.130
+
+[private5]
+33.33.33.16 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
+
+[private5:vars]
+storage=/dev/vdb
+container_name=data4
+container_ip=9.0.6.130
+
+[data_agents:children]
+private2
+private3
+private4
+private5
+
+#### MapR Containers definition, check that the right overlay IP is used
+#### If the agent overlay IP is 9.0.2.129, the first container runnint in 
+#### the agent will be 9.0.2.130
+
 [controller]
 comc1 ansible_ssh_host=9.0.2.130 ansible_ssh_pass=mapr ansible_ssh_user=root
 
-[controller:vars]
-dcos_public=33.33.33.11
-dcos_private=33.33.33.6
-storage=/dev/vdb
-clustername=my.cluster.com
-
 [datanode1]
-data1 ansible_ssh_host=9.0.3.130 ansible_ssh_pass=mapr ansible_ssh_user=root dcos_private=33.33.33.12 storage=/dev/vdb
-
-[datanode1:vars]
-dcos_private=33.33.33.12
-storage=/dev/vdb
+data1 ansible_ssh_host=9.0.3.130 ansible_ssh_pass=mapr ansible_ssh_user=root 
 
 [datanode2]
 data2 ansible_ssh_host=9.0.4.130 ansible_ssh_pass=mapr ansible_ssh_user=root
 
-[datanode2:vars]
-dcos_private=33.33.33.15
-storage=/dev/vdb
-
 [datanode3]
 data3 ansible_ssh_host=9.0.5.130 ansible_ssh_pass=mapr ansible_ssh_user=root
 
-[datanode3:vars]
-dcos_private=33.33.33.5
-storage=/dev/vdb
-
 [datanode4]
 data4 ansible_ssh_host=9.0.6.130 ansible_ssh_pass=mapr ansible_ssh_user=root
-
-[datanode4:vars]
-dcos_private=33.33.33.16
-storage=/dev/vdb
 
 [cluster:children]
 controller

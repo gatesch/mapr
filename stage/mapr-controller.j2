@@ -1,5 +1,5 @@
 {
-  "id": "/comc1",
+  "id": "/{{ hostvars[groups['private1'][0]].container_name }}",
   "instances": 1,
   "cpus": 2,
   "mem": 5120,
@@ -7,10 +7,9 @@
   "labels": {
     "HAPROXY_GROUP":"external",
     "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
-    "HAPROXY_0_VHOST": "{{ hostvars[groups['controller'][0]].dcos_public }}"
+    "HAPROXY_0_VHOST": "{{ hostvars[groups['public1'][0]].ansible_eth0['ipv4']['address'] }}"
   },
-  "constraints": [["hostname", "CLUSTER", "{{ hostvars[groups['controller'][0]].dcos_private }}"
-  }"]],
+  "constraints": [["hostname", "CLUSTER", "{{ hostvars[groups['private1'][0]].ansible_eth0['ipv4']['address'] }}"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -20,7 +19,7 @@
       "image": "maprtech/mapr-control-cent67:5.2.0",
       "privileged": true,
       "parameters": [
-                { "key": "hostname", "value": "{{ hostvars[groups['controller'][0]].ansible_hostname }}" }
+                { "key": "hostname", "value": "{{ hostvars[groups['private1'][0]].container_name }}" }
             ],
       "network": "USER",
       "portMappings": [
@@ -70,8 +69,8 @@
   ],
   "env": {
     "MEMTOTAL":"5120000",
-    "DISKLIST":"{{ hostvars[groups['controller'][0]].storage }}",
-    "CLUSTERNAME":"my.cluster.com"
+    "DISKLIST":"{{ hostvars[groups['private1'][0]].storage }}",
+    "CLUSTERNAME":"{{ hostvars[groups['private1'][0]].clustername }}"
   }
 }
 
