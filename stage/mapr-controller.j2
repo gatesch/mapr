@@ -7,9 +7,9 @@
   "labels": {
     "HAPROXY_GROUP":"external",
     "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
-    "HAPROXY_0_VHOST": "{{ hostvars[groups['public1'][0]].ansible_eth0['ipv4']['address'] }}"
+    "HAPROXY_0_VHOST": "{{ hostvars[groups['public1'][0]].host_ip }}"
   },
-  "constraints": [["hostname", "CLUSTER", "{{ hostvars[groups['private1'][0]].ansible_eth0['ipv4']['address'] }}"]],
+  "constraints": [["hostname", "CLUSTER", "{{ hostvars[groups['private1'][0]].host_ip }}"]],
   "ipAddress":{
       "networkName":"dcos"
    },
