@@ -1,0 +1,22 @@
+---
+- name: Top level play for the MapR deployment in DCOS
+  hosts: localhost
+  
+- include: playbooks/spawn-controller.yml
+- include: playbooks/hadoop.yml
+- include: playbooks/web-config.yml
+- include: playbooks/restart-web.yml
+- include: playbooks/spawn-data1.yml
+- include: playbooks/spawn-data2.yml
+- include: playbooks/spawn-data3.yml
+- include: playbooks/spawn-data4.yml
+- include: playbooks/install-controller.yml
+- include: playbooks/hosts.yml
+- include: playbooks/install-rpcbind.yml
+- include: playbooks/benchmarks.yml
+- include: playbooks/benchmarks-scripts.yml
+- include: playbooks/create-users.yml
+#- include: playbooks/create-nfsdir.yml
+- include: playbooks/configure-topology.yml
+- include: playbooks/projects-mp.yml
+- include: playbooks/remove-scripts.yml
