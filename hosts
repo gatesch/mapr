@@ -1,7 +1,7 @@
 #### DCOS public agent definition, this will host Marathon-LB to from MapR
 
 [public1]
-33.33.33.11 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem 
+33.33.33.11 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem 
 #33.33.33.11 ansible_ssh_user=root ansible_ssh_password=P@55w0rd 
 
 [public1:vars]
@@ -12,7 +12,7 @@ host_ip=33.33.33.11
 #### with name "mesos.pem"
 
 [private1]  
-33.33.33.6 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
+33.33.33.6 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
 
 #### Define the vars for the private node to define where the storage LUN 
 #### resides and the clustername
@@ -27,7 +27,7 @@ clustername=my.cluster.com
 host_ip=33.33.33.6
 
 [private2]
-33.33.33.12 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
+33.33.33.12 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
 
 [private2:vars]
 storage=/dev/vdb
@@ -36,7 +36,7 @@ container_ip=9.0.3.130
 host_ip=33.33.33.12
 
 [private3]
-33.33.33.15 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
+33.33.33.15 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
 
 [private3:vars]
 storage=/dev/vdb
@@ -45,7 +45,7 @@ container_ip=9.0.4.130
 host_ip=33.33.33.15
 
 [private4]
-33.33.33.5 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
+33.33.33.5 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
 
 [private4:vars]
 storage=/dev/vdb
@@ -54,7 +54,7 @@ container_ip=9.0.5.130
 host_ip=33.33.33.5
 
 [private5]
-33.33.33.16 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
+33.33.33.16 ansible_ssh_user=centos ansible_ssh_private_key_file=key/mesos.pem
 
 [private5:vars]
 storage=/dev/vdb
