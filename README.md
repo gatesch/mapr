@@ -35,6 +35,5 @@ ansible-playbook clean-all.yml
 
 NFS VIP will not work as the DCOS network currently sits on separate segments for each MapR member.   NFS direct access could be a problem.
 
-Possible solution:  Map the nfs port to Marathon-LB, which can server as the VIP.  Only the controller / data node could provide NFS gateway services in this case.
-
-
+try to map port 111 (portmap) will fail because this is used by marathon-lb
+and port 2049 (nfs) is not enough
