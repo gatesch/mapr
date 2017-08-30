@@ -1,17 +1,18 @@
 #### DCOS public agent definition, this will host Marathon-LB to from MapR
 
 [public1]
-10.85.232.244 ansible_ssh_user=root ansible_ssh_password=P@55w0rd 
+33.33.33.11 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem 
+#33.33.33.11 ansible_ssh_user=root ansible_ssh_password=P@55w0rd 
 
 [public1:vars]
-host_ip=10.85.232.244
+host_ip=33.33.33.11
 
 #### DCOS Private agent definitions, use private1 to host the MapR controller 
 #### copy the private key used to access the agent in the "key" directory
 #### with name "mesos.pem"
 
 [private1]  
-10.85.232.245 ansible_ssh_user=root ansible_ssh_password=P@55w0rd
+33.33.33.6 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
 
 #### Define the vars for the private node to define where the storage LUN 
 #### resides and the clustername
@@ -23,43 +24,43 @@ storage=/dev/vdb
 container_name=comc1
 container_ip=9.0.2.130
 clustername=my.cluster.com
-host_ip=10.85.232.245
+host_ip=33.33.33.6
 
 [private2]
-10.85.232.246 ansible_ssh_user=root ansible_ssh_password=P@55w0rd
+33.33.33.12 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
 
 [private2:vars]
 storage=/dev/vdb
 container_name=data1
 container_ip=9.0.3.130
-host_ip=10.85.232.246
+host_ip=33.33.33.12
 
 [private3]
-10.85.232.247 ansible_ssh_user=root ansible_ssh_password=P@55w0rd
+33.33.33.15 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
 
 [private3:vars]
 storage=/dev/vdb
 container_name=data2
 container_ip=9.0.4.130
-host_ip=10.85.232.247
+host_ip=33.33.33.15
 
 [private4]
-10.85.232.248 ansible_ssh_user=root ansible_ssh_password=P@55w0rd
+33.33.33.5 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
 
 [private4:vars]
 storage=/dev/vdb
 container_name=data3
 container_ip=9.0.5.130
-host_ip=10.85.232.248
+host_ip=33.33.33.5
 
 [private5]
-10.85.232.249 ansible_ssh_user=root ansible_ssh_password=P@55w0rd
+33.33.33.16 ansible_ssh_user=centos ansible_ssh_private_key_file=/mesos.pem
 
 [private5:vars]
 storage=/dev/vdb
 container_name=data4
 container_ip=9.0.6.130
-host_ip=10.85.232.249
+host_ip=33.33.33.16
 
 [data_agents:children]
 private2
