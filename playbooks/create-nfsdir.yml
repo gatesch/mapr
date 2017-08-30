@@ -1,0 +1,7 @@
+- name: Create NFS directory
+  hosts: cluster
+  tasks:
+
+  - file:
+      path: /mapr
+      state: directory
