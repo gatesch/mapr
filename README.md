@@ -28,3 +28,9 @@ ansible-playbook -i hosts main.yml
 ansible-playbook clean-all.yml
 
 (this will remove the playbooks for the data nodes, the main.yml file and the JSON files for marathon)
+
+
+
+--------------------- Current challenges -------------------------
+
+NFS VIP will not work as the DCOS network currently sits on separate segments for each MapR member.   NFS direct access could be a problem.
