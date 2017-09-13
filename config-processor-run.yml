@@ -24,6 +24,16 @@
         src: stage/main.j2
         dest: ./main.yml
 
+    - name: generate restart-web.yml playbook
+      template:
+        src: stage/restart-web.j2
+        dest: playbooks/restart-web.yml
+
+    - name: generate topology scripts
+      template:
+        src: stage/topology.j2
+        dest: files/topology.sh
+
     - name: Generate json file for datanodes
       template:
         src: stage/mapr-data.j2
