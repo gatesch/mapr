@@ -1,14 +1,15 @@
 {
-  "id": "/comc2",
+  "id": "/comc1",
   "instances": 1,
   "cpus": 2,
   "mem": 5120,
   "disk": 0,
   "labels": {
     "HAPROXY_GROUP":"external",
-    "HAPROXY_0_VHOST": "88.88.88.13"
+    "HAPROXY_0_REDIRECT_TO_HTTPS":"true",
+    "HAPROXY_0_VHOST": "33.33.33.11"
   },
-  "constraints": [["hostname", "CLUSTER", "88.88.88.5"]],
+  "constraints": [["hostname", "CLUSTER", "33.33.33.6"]],
   "ipAddress":{
       "networkName":"dcos"
    },
@@ -18,7 +19,7 @@
       "image": "maprtech/mapr-control-cent67:5.2.0",
       "privileged": true,
       "parameters": [
-                { "key": "hostname", "value": "comc2" }
+                { "key": "hostname", "value": "comc1" }
             ],
       "network": "USER",
       "portMappings": [
@@ -61,10 +62,20 @@
     }
   },
 
+  "healthChecks": [
+    {
+      "protocol": "TCP",
+      "gracePeriodSeconds": 500,
+      "intervalSeconds": 15,
+      "timeoutSeconds": 5,
+      "maxConsecutiveFailures": 20,
+      "portName": "http"
+    }
+  ],
   "env": {
     "MEMTOTAL":"5120000",
     "DISKLIST":"/dev/vdb",
-    "CLUSTERNAME":"my.cluster2.com"
+    "CLUSTERNAME":"my.cluster.com"
   }
 }
 

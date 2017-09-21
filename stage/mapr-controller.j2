@@ -62,16 +62,6 @@
     }
   },
 
-  "healthChecks": [
-    {
-      "protocol": "TCP",
-      "gracePeriodSeconds": 500,
-      "intervalSeconds": 15,
-      "timeoutSeconds": 5,
-      "maxConsecutiveFailures": 20,
-      "portName": "http"
-    }
-  ],
   "env": {
     "MEMTOTAL":"5120000",
     "DISKLIST":"{{ hostvars[groups['private1'][0]].storage }}",
