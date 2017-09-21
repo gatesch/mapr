@@ -21,9 +21,9 @@ host_ip=88.88.88.13
 
 [private1:vars]
 storage=/dev/vdb
-container_name=comc1
+container_name=comc2
 container_ip=9.0.2.130
-clustername=my.cluster.com
+clustername=my.cluster2.com
 host_ip=88.88.88.5
 
 [private2]
@@ -31,7 +31,7 @@ host_ip=88.88.88.5
 
 [private2:vars]
 storage=/dev/vdb
-container_name=data1
+container_name=data11
 container_ip=9.0.3.130
 host_ip=88.88.88.7
 
@@ -40,7 +40,7 @@ host_ip=88.88.88.7
 
 [private3:vars]
 storage=/dev/vdb
-container_name=data2
+container_name=data12
 container_ip=9.0.4.130
 host_ip=88.88.88.15
 
@@ -49,7 +49,7 @@ host_ip=88.88.88.15
 
 [private4:vars]
 storage=/dev/vdb
-container_name=data3
+container_name=data13
 container_ip=9.0.5.130
 host_ip=88.88.88.3
 
@@ -58,7 +58,7 @@ host_ip=88.88.88.3
 
 [private5:vars]
 storage=/dev/vdb
-container_name=data4
+container_name=data14
 container_ip=9.0.6.130
 host_ip=88.88.88.9
 

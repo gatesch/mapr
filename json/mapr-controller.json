@@ -1,0 +1,70 @@
+{
+  "id": "/comc2",
+  "instances": 1,
+  "cpus": 2,
+  "mem": 5120,
+  "disk": 0,
+  "labels": {
+    "HAPROXY_GROUP":"external",
+    "HAPROXY_0_VHOST": "88.88.88.13"
+  },
+  "constraints": [["hostname", "CLUSTER", "88.88.88.5"]],
+  "ipAddress":{
+      "networkName":"dcos"
+   },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "maprtech/mapr-control-cent67:5.2.0",
+      "privileged": true,
+      "parameters": [
+                { "key": "hostname", "value": "comc2" }
+            ],
+      "network": "USER",
+      "portMappings": [
+         { 
+            "containerPort": 8080,  
+            "servicePort": 8080, 
+            "name": "http"
+         },
+         {
+            "containerPort": 7220,
+            "servicePort": 7220,
+            "name": "cldb1" 
+         },
+         {
+            "containerPort": 22,
+            "servicePort": 26,
+            "name": "ssh" 
+         },
+         {
+            "containerPort": 7221,
+            "servicePort": 7221,
+            "name": "cldb2" 
+         },
+         {
+            "containerPort": 7222,
+            "servicePort": 7222,
+            "name": "cldb3" 
+         },
+         {
+            "containerPort": 19888,
+            "servicePort": 19888,
+            "name": "jh2"
+         },
+         {
+            "containerPort": 50030,
+            "servicePort": 50030,
+            "name": "jt"
+         }
+      ]
+    }
+  },
+
+  "env": {
+    "MEMTOTAL":"5120000",
+    "DISKLIST":"/dev/vdb",
+    "CLUSTERNAME":"my.cluster2.com"
+  }
+}
+

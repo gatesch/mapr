@@ -1,0 +1,31 @@
+{
+  "id": "/data13",
+  "instances": 1,
+  "cpus": 2,
+  "mem": 5120,
+  "disk": 0,
+  "constraints": [["hostname", "CLUSTER", "88.88.88.3"]],
+  "ipAddress":{
+      "networkName":"dcos"
+   },
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "maprtech/mapr-data-cent67:5.2.0",
+      "privileged": true,
+      "parameters": [
+                { "key": "hostname", "value": "data13" }
+            ],
+      "network": "USER"
+    }
+  },
+
+  "requirePorts": true,
+  "env": {
+    "MEMTOTAL":"5120000",
+    "CLDBIP":"9.0.2.130",
+    "DISKLIST":"/dev/vdb",
+    "CLUSTERNAME":"my.cluster2.com"
+  }
+}
+

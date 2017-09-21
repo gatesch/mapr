@@ -6,10 +6,10 @@
 - include: playbooks/hadoop.yml
 - include: playbooks/web-config.yml
 - include: playbooks/restart-web.yml
-- include: playbooks/spawn-data1.yml
-- include: playbooks/spawn-data2.yml
-- include: playbooks/spawn-data3.yml
-- include: playbooks/spawn-data4.yml
+- include: playbooks/spawn-data11.yml
+- include: playbooks/spawn-data12.yml
+- include: playbooks/spawn-data13.yml
+- include: playbooks/spawn-data14.yml
 - include: playbooks/install-controller.yml
 - include: playbooks/hosts.yml
 - include: playbooks/install-rpcbind.yml

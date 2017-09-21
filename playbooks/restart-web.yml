@@ -1,0 +1,5 @@
+---
+   - hosts: controller
+     tasks:
+     - name: restart the web server
+       command: maprcli node services -nodes comc2 -webserver restart

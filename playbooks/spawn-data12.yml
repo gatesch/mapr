@@ -1,0 +1,6 @@
+--- 
+- hosts: localhost
+  tasks:
+
+  - name: calling marathon to spawn data12
+    command: dcos marathon app add ../json/mapr-data12.json
